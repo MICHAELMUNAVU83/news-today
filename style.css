@@ -92,3 +92,74 @@ nav > a {
   overflow: hidden;
   border-radius: 40px;
 }
+nav > a:hover {
+    color: white;
+  }
+  nav > a:hover::before {
+    height: 180%;
+  }
+  nav > a:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+    width: 100%;
+    height: 0%;
+    background: #0d1321;
+    z-index: -1;
+    transition: 0.8s;
+  }
+  .like-div {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bolder;
+    transition: 1s;
+  }
+  .like-div i:hover{
+    color: red;
+  }
+  .like-div p{
+    margin-left: 5%;
+  }
+  footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 2%;
+   
+  }
+  footer h2{
+    width: 60%;
+    font-size: 2rem;
+    margin-left: 6%;
+  }
+  footer .form{
+    margin-right: 20%;
+    
+  }
+  footer .form > input{
+   height: 5rem;
+   width: 200%;
+   margin: 3%;
+   border: 2px solid #0d1321;
+   border-radius: 10px;
+   font-family: 'PT Sans Caption', sans-serif;
+  
+  }
+  .add-review{
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: bolder;
+    padding: 10px 30px;
+    color: #ede7e3;
+    border-radius: 20px;
+    background-color: #0d1321;
+  }
+  .all-comments-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1%;
+  }

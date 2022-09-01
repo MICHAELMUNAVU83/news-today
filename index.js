@@ -173,3 +173,45 @@ const getMovies = async () => {
       });
     });
   };
+  
+  const addMovieLike = () => {
+    const AllMovieLikes = document.querySelectorAll(".movies-like-button");
+    AllMovieLikes.forEach((likebtn) => {
+      likebtn.addEventListener("click", async (e) => {
+        const postMovieLikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${movieLikeID}/likes`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              item_id: e.target.id,
+            }),
+          }
+        );
+        const getMovielikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${movieLikeID}/likes`
+        );
+        const gottenMovieLikes = await getMovielikes.json();
+        gottenMovieLikes.forEach((dat) => {
+          if (String(e.target.id) === dat.item_id) {
+            e.target.parentElement.parentElement.firstElementChild.innerText =
+              dat.likes;
+          }
+        });
+      });
+    });
+  };
+  const loadMovieLike = async () => {
+    const likeMovieContent = document.querySelectorAll(".movie-like-count");
+    const getMovielikes = await fetch(
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${movieLikeID}/likes`
+    );
+    const gottenMovieLikes = await getMovielikes.json();
+    likeMovieContent.forEach((likeContent) => {
+      gottenMovieLikes.forEach((dat) => {
+        if (likeContent.id === dat.item_id) {
+          likeContent.innerText = dat.likes;
+        }
+      });
+    });
+  };

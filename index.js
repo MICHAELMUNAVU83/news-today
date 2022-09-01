@@ -269,3 +269,11 @@ const getMovies = async () => {
       `;
     });
   };
+  document.addEventListener("DOMContentLoaded", () => {
+    loadComments();
+    postComment();
+    getPopular();
+    getBooks();
+    getMovies();
+  });
+  

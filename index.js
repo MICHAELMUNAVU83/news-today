@@ -8,7 +8,6 @@ const getPopular = async () => {
     );
     const fetchedPopular = await fetchPopular.json();
     const popularArray = fetchedPopular.results.slice(1, 13);
-    console.log(popularArray);
     displayPopular(popularArray);
   };
   const displayPopular = (populars) => {
@@ -34,7 +33,6 @@ const getPopular = async () => {
       "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=su6Pt4Vu8bMecCsPP5C5kA09UJyPuwAn"
     );
     const fetchedBooks = await fetchBooks.json();
-    console.log(fetchedBooks.results);
     displayBooks(fetchedBooks.results);
   };
   const displayBooks = (Books) => {
@@ -69,7 +67,6 @@ const getMovies = async () => {
       "https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=su6Pt4Vu8bMecCsPP5C5kA09UJyPuwAn"
     );
     const fetchedMovies = await fetchMovies.json();
-    console.log(fetchedMovies.results);
     displayMovies(fetchedMovies.results.slice(0, 12));
   };
   const displayMovies = (movies) => {
@@ -220,8 +217,6 @@ const getMovies = async () => {
       e.preventDefault();
       const comment = document.getElementById("review-comment").value;
       const userName = document.getElementById("review-username").value;
-      console.log(comment);
-      console.log(userName);
       const postComment = await fetch(
         `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${commentsID}/comments`,
         {
@@ -239,7 +234,6 @@ const getMovies = async () => {
       );
       document.querySelector(".all-comments-section").innerHTML = "";
       const gottenComments = await getComments.json();
-      console.log(gottenComments);
       gottenComments.forEach((comment) => {
         document.querySelector(".all-comments-section").innerHTML += `
         <div class="each-comment">
@@ -258,7 +252,6 @@ const getMovies = async () => {
       `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${commentsID}/comments?item_id=2`
     );
     const gottenComments = await getComments.json();
-    console.log(gottenComments);
     gottenComments.forEach((comment) => {
       document.querySelector(".all-comments-section").innerHTML += `
       <div class="each-comment">

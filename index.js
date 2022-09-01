@@ -215,3 +215,57 @@ const getMovies = async () => {
       });
     });
   };
+  const postComment = () => {
+    document.querySelector(".add-review").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const comment = document.getElementById("review-comment").value;
+      const userName = document.getElementById("review-username").value;
+      console.log(comment);
+      console.log(userName);
+      const postComment = await fetch(
+        `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${commentsID}/comments`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            item_id: 2,
+            username: userName,
+            comment: comment,
+          }),
+        }
+      );
+      const getComments = await fetch(
+        `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${commentsID}/comments?item_id=2`
+      );
+      document.querySelector(".all-comments-section").innerHTML = "";
+      const gottenComments = await getComments.json();
+      console.log(gottenComments);
+      gottenComments.forEach((comment) => {
+        document.querySelector(".all-comments-section").innerHTML += `
+        <div class="each-comment">
+        <p> <i class="fa-solid fa-user"></i> ${comment.username.toUpperCase()}</p>
+        <p> <i class="fa-solid fa-comment"></i> ${comment.comment}</p>
+        </div>
+        
+        `;
+      });
+      document.getElementById("review-comment").value="Add your review....."
+      document.getElementById("review-username").value="Username...."
+    });
+  };
+  const loadComments = async () => {
+    const getComments = await fetch(
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${commentsID}/comments?item_id=2`
+    );
+    const gottenComments = await getComments.json();
+    console.log(gottenComments);
+    gottenComments.forEach((comment) => {
+      document.querySelector(".all-comments-section").innerHTML += `
+      <div class="each-comment">
+      <p><i class="fa-solid fa-user"></i>  ${comment.username.toUpperCase()}</p>
+      <p>  <i class="fa-solid fa-comment"></i> ${comment.comment}</p>
+      </div>
+      
+      `;
+    });
+  };

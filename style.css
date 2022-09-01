@@ -196,6 +196,9 @@ footer .form > input {
   .each-character-div {
     width: 94%;
   }
+  .each-character-div:hover {
+    transform: scale(1);
+  }
   nav > a {
     width: 20%;
     padding: 5px;

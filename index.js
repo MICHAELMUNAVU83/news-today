@@ -132,3 +132,44 @@ const getMovies = async () => {
       });
     });
   };
+  const addBooksLike = () => {
+    const AllBooksLikes = document.querySelectorAll(".book-like-button");
+    AllBooksLikes.forEach((likebtn) => {
+      likebtn.addEventListener("click", async (e) => {
+        const postBookLikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${booksLikesID}/likes`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              item_id: e.target.id,
+            }),
+          }
+        );
+        const getBooklikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${booksLikesID}/likes`
+        );
+        const gottenBooksLikes = await getBooklikes.json();
+        gottenBooksLikes.forEach((dat) => {
+          if (String(e.target.id) === dat.item_id) {
+            e.target.parentElement.parentElement.firstElementChild.innerText =
+              dat.likes;
+          }
+        });
+      });
+    });
+  };
+  const loadBooksLike = async () => {
+    const likeBooksContent = document.querySelectorAll(".book-like-count");
+    const getBooklikes = await fetch(
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${booksLikesID}/likes`
+    );
+    const gottenBooksLikes = await getBooklikes.json();
+    likeBooksContent.forEach((likeContent) => {
+      gottenBooksLikes.forEach((dat) => {
+        if (likeContent.id === dat.item_id) {
+          likeContent.innerText = dat.likes;
+        }
+      });
+    });
+  };

@@ -63,3 +63,30 @@ const getPopular = async () => {
       loadBooksLike();
     });
   };
+
+const getMovies = async () => {
+    const fetchMovies = await fetch(
+      "https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=su6Pt4Vu8bMecCsPP5C5kA09UJyPuwAn"
+    );
+    const fetchedMovies = await fetchMovies.json();
+    console.log(fetchedMovies.results);
+    displayMovies(fetchedMovies.results.slice(0, 12));
+  };
+  const displayMovies = (movies) => {
+    movies.forEach((movie) => {
+      document.getElementById("entertainment-news-div").innerHTML += `
+      <div class="each-character-div">
+      <h2  >Title: ${movie.display_title}</h2>
+      <img src=${movie.multimedia.src} alt=${movie.display_title}>
+      <p class="description" >By: ${movie.byline}</p>
+      <p class="description">Description: ${movie.summary_short}</p>
+      <div class="like-div">
+      <p id=${movie.link.url} class="movie-like-count">0<p>
+      <i id=${movie.link.url} class="fa fa-thumbs-up movies-like-button" aria-hidden="true"></i>
+      </div>
+    </div> 
+      `;
+      loadMovieLike();
+      addMovieLike();
+    });
+  };

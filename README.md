@@ -1,3 +1,5 @@
+![news-today-image](https://user-images.githubusercontent.com/86654131/187967240-3d223da3-d33f-490d-81ee-5c605071dc9c.png)
+
 # Project Name
 
 TRANCE NEWS TODAY
@@ -5,8 +7,6 @@ TRANCE NEWS TODAY
 # DESCRIPTION
 This site helps you get news on latest happenings , entertainment and top reads .
 
-
-## Built With
 -HTML
 -Javascript
 -CSS

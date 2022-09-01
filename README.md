@@ -13,7 +13,7 @@ This site helps you get news on latest happenings , entertainment and top reads 
 
 ## Live Demo 
 
-[Live Demo Link](https://michaelmunavu83.github.io/news-today/)
+[Live Demo Link](https://trance-news-today.netlify.app/)
 
 ## Authors
 

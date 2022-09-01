@@ -90,3 +90,45 @@ const getMovies = async () => {
       addMovieLike();
     });
   };
+  const addPopularLike = () => {
+    const AllPopularLikes = document.querySelectorAll(".popular-like-button");
+    AllPopularLikes.forEach((likebtn) => {
+      likebtn.addEventListener("click", async (e) => {
+        const postLikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${popularLikesID}/likes`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              item_id: e.target.id,
+            }),
+          }
+        );
+        const getlikes = await fetch(
+          `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${popularLikesID}/likes`
+        );
+        const gottenLikes = await getlikes.json();
+        gottenLikes.forEach((dat) => {
+          if (String(e.target.id) === dat.item_id) {
+            e.target.parentElement.parentElement.firstElementChild.innerText =
+              dat.likes;
+          }
+        });
+      });
+    });
+  };
+  
+  const loadPopularLike = async () => {
+    const likesContent = document.querySelectorAll(".likes-count");
+    const getlikes = await fetch(
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${popularLikesID}/likes`
+    );
+    const gottenLikes = await getlikes.json();
+    likesContent.forEach((likeContent) => {
+      gottenLikes.forEach((dat) => {
+        if (likeContent.id === dat.item_id) {
+          likeContent.innerText = dat.likes;
+        }
+      });
+    });
+  };

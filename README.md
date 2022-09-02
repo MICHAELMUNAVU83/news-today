@@ -15,7 +15,7 @@ This site helps you get news on latest happenings , entertainment and top reads 
 
 [Live Demo Link](https://trance-news-today.netlify.app/)
 
-## Authors
+## Author
 
 👤 **MICHAEL MUNAVU**
 
@@ -24,7 +24,10 @@ This site helps you get news on latest happenings , entertainment and top reads 
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/michael-munavu-78703a218/)
 - 
 
-
+## SETUP
+To setup git clone https://github.com/MICHAELMUNAVU83/news-today.git
+cd news-today
+Open with live server to view the site
 
 ## 📝 License
 

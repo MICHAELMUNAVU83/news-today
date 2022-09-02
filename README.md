@@ -7,6 +7,7 @@ TRANCE NEWS TODAY
 # DESCRIPTION
 This site helps you get news on latest happenings , entertainment and top reads .
 
+# BUILT USING
 -HTML
 -Javascript
 -CSS
